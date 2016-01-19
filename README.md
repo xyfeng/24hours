@@ -23,6 +23,6 @@ Check Printer Status `lpstat -p -d`
 Print Txt File  `lp -d Thermal_Label_Printer xxxx.txt`
 
 ### Linux (Setup using Raspberry Pi)
-1. The printer uses a WinBond CDC USB chip, so linux mounts it automatically as /dev/usb/lp0.
-2. $ sudo chmod a+rw /dev/usb/lp0
-3. $ echo 'Testing 1 2 3' > /dev/usb/lp0
+1. The printer uses a WinBond CDC USB chip, so linux mounts it automatically as `/dev/usb/lp0`.
+2. $ `sudo chmod a+rw /dev/usb/lp0`
+3. $ `echo 'Testing 1 2 3' > /dev/usb/lp0`
