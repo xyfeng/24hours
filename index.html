@@ -62,7 +62,7 @@
         function highlight(data, search) {
             return data.replace(new RegExp("(" + preg_quote(search) + ")", 'gi'), "<code>$1</code>");
         }
-        $.getJSON("/24h.json", function(data) {
+        $.getJSON("24h.json", function(data) {
             $.each(data, function(k1, v1) {
                 var items = [];
                 Object.keys(v1).sort().forEach(function(k2) {
