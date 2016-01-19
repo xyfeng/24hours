@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Twitter Clock</title>
+    <style>
+        * {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            height: 36px;
+            line-height: 18px;
+        }
+
+        body {
+            width: 14500px;
+        }
+
+        ul {
+            display: block;
+            margin: 100px;
+            list-style-type: none;
+            float: left;
+        }
+
+        li {
+            width: 360px;
+            height: auto;
+            margin: 14px 0;
+        }
+
+        code {
+            background: #ff0;
+        }
+
+        img.emoji {
+            width: 1em;
+            height: 1em;
+            padding: 0 .05em 0 .1em;
+            vertical-align: -0.1em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/twemoji/1.2.0/twemoji.min.js'></script>
+
+    <script>
+        /*
+        cijy7fwmfsoenra/clock.json
+        5pjfu1opsq2ueyf/temp.json
+        */
+        function preg_quote(str) {
+            // http://kevin.vanzonneveld.net
+            return (str + '').replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, "\\$1");
+        }
+
+        function highlight(data, search) {
+            return data.replace(new RegExp("(" + preg_quote(search) + ")", 'gi'), "<code>$1</code>");
+        }
+        $.getJSON("https://dl.dropboxusercontent.com/s/cijy7fwmfsoenra/clock.json", function(data) {
+            $.each(data, function(k1, v1) {
+                var items = [];
+                Object.keys(v1).sort().forEach(function(k2) {
+                    var v2 = v1[k2];
+                    items.push("<li id='" + k2 + "'>" + twemoji.parse(highlight(v2, k2)) + "</li>");
+                });
+                $("<ul/>", {
+                    "class": "hour",
+                    html: items.join("")
+                }).appendTo("body");
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,6 +1,0 @@
-# define the runtime language
-runtime "python"
-# exec is the file that will be executed:
-exec "parse.py"
-
-pip 'TwitterSearch', '1.0.0'
